@@ -7,8 +7,7 @@ class MainPage extends React.Component {
     state={
         employees:[],
         searchInput: "",
-        sortedEmp:[],
-
+        sortEmp:[],
         order:false
     }
 
