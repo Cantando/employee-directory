@@ -6,7 +6,9 @@ class MainPage extends React.Component {
 
     state={
         employees:[],
+        searchInput: "",
         sortedEmp:[],
+
         order:false
     }
 
@@ -21,12 +23,16 @@ class MainPage extends React.Component {
         })
         .catch(err=> console.log(err));
     }
-
+    filter(e){
+        this.setState({
+            searchInput: e.target.value
+        });
+    }
    render(){
 
     let employeesFilter=this.state.employees.filter(
         (employee)=>{
-            return employee.name.first;
+            return employee.name.first.toLowerCase().indexOf(this.state.searchInput.toLowerCase())!== -1;
         }
     )
        return(
@@ -38,7 +44,7 @@ class MainPage extends React.Component {
                      </h1>
                     <label>Search for your Employees:</label>
                     <br/>
-                    <input type="text" />
+                    <input type="text" value={this.state.searchInput} onChange={this.filter.bind(this)}/>
                  </div>
              </div>
 
