@@ -24,7 +24,16 @@ class MainPage extends React.Component {
    render(){
        return(
         <>
-
+             <div className="jumbotron jumbotron-fluid">
+                 <div className="container">
+                     <h1>
+                         Your Employee Directory
+                     </h1>
+                    <label>Search for your Employees:</label>
+                    <br/>
+                    <input type="text" />
+                 </div>
+             </div>
         </>
        )
    }
