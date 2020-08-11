@@ -27,13 +27,43 @@ class MainPage extends React.Component {
             searchInput: e.target.value
         });
     }
-   render(){
+
+    //sort by first name
+    sortFirstName(a,b){
+        if(a.name.first<b.name.first){
+            return -1;
+        }
+        if(a.name.first>b.name.first){
+            return 1;
+        }
+    }
+
+    onClickFirstName= () =>{
+        if(this.state.order===false){
+            this.setState({
+                sortEmp:this.state.employees.sort(this.sortFirstName),
+                order:true
+            })
+        }
+        else{
+            this.setState({
+                sortEmp:this.state.employees.reverse(),
+                order:false
+            })
+        }
+
+    }
+   
+   
+    render(){
 
     let employeesFilter=this.state.employees.filter(
         (employee)=>{
             return employee.name.first.toLowerCase().indexOf(this.state.searchInput.toLowerCase())!== -1;
         }
     )
+
+
        return(
         <>
              <div className="jumbotron jumbotron-fluid">
@@ -52,7 +82,7 @@ class MainPage extends React.Component {
                      <tr>
                      <th scope="col"></th>
                      <th scope="col">Image</th>
-                     <th scope="col">First Name</th>
+                     <th scope="col" onClick={this.onClickFirstName}>First Name</th>
                      <th scope="col">Last Name</th>
                      <th scope="col">Email</th>
                      <th scope="col">Phone Number</th>
