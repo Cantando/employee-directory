@@ -1,0 +1,12 @@
+.container{
+    padding-left: 22%;
+}
+
+.jumbotron{
+    background-color: rgb(121, 255, 210);
+    margin-bottom: 0;
+}
+
+.table{
+    background-color: rgb(233, 255, 255);
+}
